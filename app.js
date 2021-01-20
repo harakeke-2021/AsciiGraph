@@ -7,7 +7,14 @@ InhouseHours = [8, 8, 8, 8, 8, 0, 0]
 
 ExpectHours = [9, 9, 9, 9, 9, 5, 5]
 
+//the readline config
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+//colour config
 
 const ExpectHoursChart =
     config = {
@@ -23,6 +30,7 @@ config = {
     ]
 }
 
+//total hours
 
 function totalProductiveHours(arr){
 
@@ -35,6 +43,10 @@ function totalProductiveHours(arr){
     return totalHours
 }
 
+//add onto an array
+
+
+//the extend Arrays function is so that it may duplicate the indexes inside an array and returns a new larger array.
 function extendArray(arr, amount){
     const mod_arr = []
     for (i = 0; arr.length > i; i++)
@@ -46,26 +58,29 @@ function extendArray(arr, amount){
     }    
     return mod_arr
 }
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
+//once we have the users array we will have to run this over it
+//so that the array ios presentable.
 
 UserArray = []
+
+
+
 const UserWeekData = rl.on('line', (input) => {
+    const regex = new RegExp('^[0-9]+$')
     try{
-        numInput = Number(input)//1 error for when they are not using the number datatype
-        if(numInput > 24)
-        //one error for when the user is over 24
+        if(regex.test(input)){
+            const inputNumber = Number(input)//ok now that I have my input stored as a number I would like to add it to the array
+        }
+        else{
+            throw new Error('Please enter a number next time.')
+        }
+        if(Number(input) > 24)
         {
-            throw error
+            throw new Error('I am sorry but I can not allow for you to work more than 24 hours in a single day.')
         }
         UserArray.push(input)
-        console.log(UserArray)
     }
     catch(err){
-        console.log('the user is only allowed to give us a number as input' + err.stack)
-
+        console.log(err)
     }
 })
