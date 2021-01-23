@@ -105,7 +105,8 @@ function displayGraph(arr) {
 
 function displayDate(arr, day)
 {
-   if (day > 7)
+    console.log(day)
+   if (day >= 7)
    {
      console.log(arr[day])
    }
@@ -136,10 +137,10 @@ rl.on('line', (input) => {
       displayDate(message ,readlineLoop)
     }
     else{
-      console.log(UserArray)
       const extendedArray = extendArray(UserArray, 3)
+      console.log('All the hours you have worked hard at your goals.')
       displayGraph(extendedArray)
-      console.log(extendedArray)
+      console.log('You worked a toatal of ' + totalProductiveHours(UserArray) + ' productive hours.')
       rl.close()
     }
   })
