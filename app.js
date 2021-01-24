@@ -7,22 +7,6 @@ InhouseHours = [8, 8, 8, 8, 8, 0, 0]
 
 ExpectHours = [9, 9, 9, 9, 9, 5, 5]
 
-
-const ExpectHoursChart =
-    config = {
-        colors: [
-        asciichart.lightcyan
-        ]
-    }
-
-const InputHoursChart = 
-config = {
-    colors: [
-        asciichart
-    ]
-}
-
-
 function totalProductiveHours(arr){
 
     let totalHours = 0
@@ -46,9 +30,6 @@ function extendArray(arr, amount){
     return mod_arr
 }
 
-
-
-
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -68,7 +49,6 @@ function CheckForNumber(input, limit)
         return Number(input)
       }
 }
-
 
 function pushtoArray(arr, input) {
   try {
@@ -105,7 +85,6 @@ function displayGraph(arr) {
 
 function displayDate(arr, day)
 {
-    console.log(day)
    if (day >= 7)
    {
      console.log(arr[day])
@@ -125,7 +104,6 @@ function GetProductiveHoursFromUser()
   let readlineLoop = 0
   let stageForInput = true
 
-
 displayDate(message, readlineLoop)
 
 rl.on('line', (input) => {
@@ -138,9 +116,9 @@ rl.on('line', (input) => {
     }
     else{
       const extendedArray = extendArray(UserArray, 3)
-      console.log('All the hours you have worked hard at your goals.')
+      console.log('these are all the hours you have worked hard towards your goals this week.')
       displayGraph(extendedArray)
-      console.log('You worked a toatal of ' + totalProductiveHours(UserArray) + ' productive hours.')
+      console.log('You worked a total of ' + totalProductiveHours(UserArray) + ' productive hours this week.')
       rl.close()
     }
   })
