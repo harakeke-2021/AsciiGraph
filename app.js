@@ -124,8 +124,10 @@ rl.on('line', (input) => {
   })
 }
 
-//GetProductiveHoursFromUser()
+
+GetProductiveHoursFromUser()
 
 module.exports = {
   totalProductiveHours,
+  CheckForNumber
 }
