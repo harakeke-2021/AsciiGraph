@@ -13,8 +13,4 @@
 
 #### COMPLETE
 
-
-
-
-
-## Note to futuire self. when you are working on the project. it would be a very good idea to first and foremost check class whether there are any resources there. and if not that. if there are any videos if you can not find what you are looking for inside of the courses code or . any shared code. do more digging in the github of the course before you start looking and setting up else where
+#### test command 'npm test'

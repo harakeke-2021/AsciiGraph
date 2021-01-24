@@ -1,25 +1,25 @@
-const { test, expect } = require("@jest/globals")
-
 const app = require('./app')
+const getTotalHours = app.totalProductiveHours
 
-
-//Return total 
-
-test('Get total contents from an array', () => {
-    const listeners = [
-        12,
-        23,
-        41,
-        789,
-        312,
-        12312312,
+test('totalProductiveHours returns the total hours that had been worked.', () => {
+    // Arrange
+    const hours = [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
     ]
-    const listenersArrayTotal = app.totalProductiveHours(listeners)
+
+    // Act
+    const numberofProductiveHours = getTotalHours(hours)
+
+    // Assert
+    expect(numberofProductiveHours).toBe(14)
+
+
 
 
 })
-
-
-
-
-//I will need to run off on my own and do some quick research on jest
