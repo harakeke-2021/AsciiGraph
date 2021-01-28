@@ -37,15 +37,15 @@ test('testing number check', () => {
 
     // Act.
     const inputTesting1 = getNumberCheck(input1, 24)
-    const inputTesting2 = getNumberCheck(input2, 24)
-    const inputTesting3 = getNumberCheck(input3, 24)
-    const inputTesting4 = getNumberCheck(input4, 800)
+    //const inputTesting2 = getNumberCheck(input2, 24)
+    //const inputTesting3 = getNumberCheck(input3, 24)
+    //const inputTesting4 = getNumberCheck(input4, 800)
     
     // Assert.
-    
     console.log(inputTesting1)
-    expect(inputTesting1).toThrow('Please enter a number next time.')
-
+    
+    expect(inputTesting1).toStrictEqual(new Error('I am sorry but I can not allow for you to work more than 24 hours in a single day.'))
+      
 })
     // function CheckForNumber(input, limit)
     // {

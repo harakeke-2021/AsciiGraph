@@ -37,17 +37,22 @@ const rl = readline.createInterface({
 
 function CheckForNumber(input, limit)
 {
-      const regex = new RegExp('^[0-9]+$')
-        if(!regex.test(input)){
-        throw 'Please enter a number next time.'
-      }
-      else if(input > limit)
-      {
-          throw 'I am sorry but I can not allow for you to work more than 24 hours in a single day.'
-        }
-      else {
-        return Number(input)
-      }
+  try{
+
+    const regex = new RegExp('^[0-9]+$')
+    if(!regex.test(input)){
+      throw 'Please enter a number next time.'
+    }
+    else if(input > limit)
+    {
+      throw 'I am sorry but I can not allow for you to work more than 24 hours in a single day.'
+    }
+    else {
+      return Number(input)
+    }
+  } catch (e) {
+    return Error(e)
+  }
 }
 
 function pushtoArray(arr, input) {
@@ -109,6 +114,11 @@ displayDate(message, readlineLoop)
 rl.on('line', (input) => {
     if (stageForInput === true){
       const inputNumber = CheckForNumber(input, 24)
+      if (typeof inputNumber === error){
+        console.error(inputNumber)
+      }
+
+
       pushtoArray(UserArray, inputNumber)
       readlineLoop = incrementLimit(readlineLoop)
       stageForInput = changeAtLimit(readlineLoop)
