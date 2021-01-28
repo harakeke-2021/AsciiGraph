@@ -15,8 +15,6 @@ test('totalProductiveHours returns the total hours that had been worked.', () =>
         2
     ]
 
-
-
     // Act.
     const numberofProductiveHours = getTotalHours(hoursInArray)
 
@@ -28,7 +26,7 @@ test('totalProductiveHours returns the total hours that had been worked.', () =>
 
 test('testing number check', () => {
 
-    //test extend array. Expectations:
+    //test extend array.
     // Arrange.
     const input1 = 29
     const input2 = '6'
@@ -37,41 +35,20 @@ test('testing number check', () => {
 
     // Act.
     const inputTesting1 = getNumberCheck(input1, 24)
-    const inputTesting2 = getNumberCheck(input2, 24)
-    const inputTesting3 = getNumberCheck(input3, 24)
-    const inputTesting4 = getNumberCheck(input4, 800)
     
     // Assert.
-    
     console.log(inputTesting1)
-    expect(inputTesting1).toThrow('Please enter a number next time.')
-
+    
+    expect(inputTesting1).toStrictEqual(new Error('I am sorry but I can not allow for you to work more than 24 hours in a single day.'))
+      
 })
-    // function CheckForNumber(input, limit)
-    // {
-    //       const regex = new RegExp('^[0-9]+$')
-    //         if(!regex.test(input)){
-    //         throw 'Please enter a number next time.'
-    //       }
-    //       else if(input > limit)
-    //       {
-    //           throw 'I am sorry but I can not allow for you to work more than 24 hours in a single day.'
-    //         }
-    //       else {
-    //         return Number(input)
-    //       }
-    // }
-
-    //test check for numbers. Expectations: takes in a number and a limit and will return an error depending on if the limit is reached for not and depending on the datatype that it receives
 
 
 
-    //test push to array. Expectations:
+    //test push to array.
 
-    //test increment limit. Expectations:
+    //test increment limit.
 
-    //test change at limit. Expectations:
+    //test change at limit.
 
-    //test display date. Expectations:
-
-    //there is no way that I can think of at the moment for how we could test for display graph.
+    //test display date.
