@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose",
+    "dev": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,12 @@
   "homepage": "https://github.com/wallace222/AsciiGraph#readme",
   "dependencies": {
     "asciichart": "^1.5.25",
+    "i": "^0.3.6",
     "readline": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "jest-preset-angular": "^8.3.2"
   }
 }

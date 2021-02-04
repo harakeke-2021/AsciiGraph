@@ -7,22 +7,6 @@ InhouseHours = [8, 8, 8, 8, 8, 0, 0]
 
 ExpectHours = [9, 9, 9, 9, 9, 5, 5]
 
-
-const ExpectHoursChart =
-    config = {
-        colors: [
-        asciichart.lightcyan
-        ]
-    }
-
-const InputHoursChart = 
-config = {
-    colors: [
-        asciichart
-    ]
-}
-
-
 function totalProductiveHours(arr){
 
     let totalHours = 0
@@ -46,9 +30,6 @@ function extendArray(arr, amount){
     return mod_arr
 }
 
-
-
-
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -56,19 +37,23 @@ const rl = readline.createInterface({
 
 function CheckForNumber(input, limit)
 {
-      const regex = new RegExp('^[0-9]+$')
-        if(!regex.test(input)){
-        throw 'Please enter a number next time.'
-      }
-      else if(input > limit)
-      {
-          throw 'I am sorry but I can not allow for you to work more than 24 hours in a single day.'
-        }
-      else {
-        return Number(input)
-      }
-}
+  try{
 
+    const regex = new RegExp('^[0-9]+$')
+    if(!regex.test(input)){
+      throw 'Please enter a number next time.'
+    }
+    else if(input > limit)
+    {
+      throw 'I am sorry but I can not allow for you to work more than 24 hours in a single day.'
+    }
+    else {
+      return Number(input)
+    }
+  } catch (e) {
+    return Error(e)
+  }
+}
 
 function pushtoArray(arr, input) {
   try {
@@ -105,7 +90,7 @@ function displayGraph(arr) {
 
 function displayDate(arr, day)
 {
-   if (day > 7)
+   if (day >= 7)
    {
      console.log(arr[day])
    }
@@ -124,25 +109,35 @@ function GetProductiveHoursFromUser()
   let readlineLoop = 0
   let stageForInput = true
 
-
 displayDate(message, readlineLoop)
 
 rl.on('line', (input) => {
     if (stageForInput === true){
       const inputNumber = CheckForNumber(input, 24)
+      if (typeof inputNumber === error){
+        console.error(inputNumber)
+      }
+
+
       pushtoArray(UserArray, inputNumber)
       readlineLoop = incrementLimit(readlineLoop)
       stageForInput = changeAtLimit(readlineLoop)
       displayDate(message ,readlineLoop)
     }
     else{
-      console.log(UserArray)
       const extendedArray = extendArray(UserArray, 3)
+      console.log('these are all the hours you have worked hard towards your goals this week.')
       displayGraph(extendedArray)
-      console.log(extendedArray)
+      console.log('You worked a total of ' + totalProductiveHours(UserArray) + ' productive hours this week.')
       rl.close()
     }
   })
 }
 
+
 GetProductiveHoursFromUser()
+
+module.exports = {
+  totalProductiveHours,
+  CheckForNumber
+}
